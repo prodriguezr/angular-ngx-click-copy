@@ -58,12 +58,12 @@ export class AppComponent {}
 ## ⚙️ Available Inputs
 
 | Input              | Type                       | Default  | Description                                                        |
-|--------------------|----------------------------|----------|--------------------------------------------------------------------|
-| `copyText`         | `string`                   | `''`     | Explicit text to copy. If not set, copies the inner content.       |
-| `showFeedback`     | `boolean`                  | `true`   | Whether to show visual feedback.                                   |
-| `feedbackDuration` | `number`                   | `2000`   | Duration (in ms) to show feedback.                                 |
-| `feedbackMessage`  | `string`                   | `''`     | Custom feedback text (only if no template provided).               |
-| `locale`           | `'auto' | 'es' | 'en'`      | `'auto'` | Auto-detect browser language or override manually.                 |
+|--------------------|-----------------------------|----------|--------------------------------------------------------------------|
+| `copyText`         | `string`                    | `''`     | Explicit text to copy. If not set, copies the inner content.       |
+| `showFeedback`     | `boolean`                   | `true`   | Whether to show visual feedback.                                   |
+| `feedbackDuration` | `number`                    | `2000`   | Duration (in ms) to show feedback.                                 |
+| `feedbackMessage`  | `string`                    | `''`     | Custom feedback text (only if no template provided).               |
+| `locale`           | `'auto' | 'es' | 'en'`       | `'auto'` | Auto-detect browser language or override manually.                 |
 
 ---
 
@@ -79,17 +79,17 @@ export class AppComponent {}
 
 ## 🎨 CSS Variables for Styling
 
-| CSS Variable                                | Default              | Description                            |
-|---------------------------------------------|----------------------|----------------------------------------|
-| `--ngx-click-copy-feedback-background`     | `black`               | Background color of feedback bubble   |
-| `--ngx-click-copy-feedback-color`           | `white`               | Text color                             |
-| `--ngx-click-copy-feedback-padding`         | `0.5rem 1rem`         | Padding                                |
-| `--ngx-click-copy-feedback-border-radius`   | `0.375rem`            | Rounded corners                        |
-| `--ngx-click-copy-feedback-font-family`     | `inherit`             | Font family (inherits from app)        |
-| `--ngx-click-copy-feedback-top`             | `0.5rem`              | Top position                           |
-| `--ngx-click-copy-feedback-right`           | `0.5rem`              | Right position                         |
-| `--ngx-click-copy-feedback-bottom`          | `auto`                | Bottom position                        |
-| `--ngx-click-copy-feedback-left`            | `auto`                | Left position                          |
+| CSS Variable                             | Default              | Description                            |
+|------------------------------------------|----------------------|----------------------------------------|
+| `--ngx-click-copy-feedback-background`   | `black`              | Background color of feedback bubble   |
+| `--ngx-click-copy-feedback-color`        | `white`              | Text color                             |
+| `--ngx-click-copy-feedback-padding`      | `0.5rem 1rem`        | Padding                                |
+| `--ngx-click-copy-feedback-border-radius`| `0.375rem`           | Rounded corners                        |
+| `--ngx-click-copy-feedback-font-family`  | `inherit`            | Font family (inherits from app)        |
+| `--ngx-click-copy-feedback-top`          | `0.5rem`             | Top position                           |
+| `--ngx-click-copy-feedback-right`        | `0.5rem`             | Right position                         |
+| `--ngx-click-copy-feedback-bottom`       | `auto`               | Bottom position                        |
+| `--ngx-click-copy-feedback-left`         | `auto`               | Left position                          |
 
 ---
 
@@ -130,8 +130,127 @@ MIT © 2025 - Pablo Andrés Rodríguez R.
 
 ---
 
-## 🇪🇸 Versión en Español
+# 🇪🇸 Versión en Español
 
---- 
-(Sección en español comenzaría aquí, similar a la anterior)
+---
+
+# ngx-click-copy
+
+🚀 Librería Angular standalone para copiar contenido al portapapeles con feedback visual opcional.
+
+---
+
+## ✨ Características
+
+- Compatible Angular `>=17.0.0`
+- Usa **Standalone Components** y **Signals**
+- Usa el **nuevo control de flujo** (`@if`)
+- **Internacionalización automática** (`es`, `en`) o manual via `[locale]`
+- **Variables CSS** para personalizar colores, posición, fuente y estilos
+- **Feedback customizado** o texto por defecto ("¡Copiado!" / "Copied!")
+- Sin dependencias externas
+- Tamaño ultraliviano
+
+---
+
+## 📦 Instalación
+
+```bash
+npm install ngx-click-copy
+```
+
+---
+
+## 🚀 Uso básico
+
+```ts
+import { NgxClickCopyComponent, CopyFeedbackComponent } from 'ngx-click-copy';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [NgxClickCopyComponent, CopyFeedbackComponent],
+  templateUrl: './app.component.html',
+})
+export class AppComponent {}
+```
+
+```html
+<ngx-click-copy [copyText]="'npm install ngx-click-copy'" [showFeedback]="true">
+  <pre>npm install ngx-click-copy</pre>
+
+  <ngx-click-copy-feedback>
+    <div>¡Texto copiado al portapapeles!</div>
+  </ngx-click-copy-feedback>
+</ngx-click-copy>
+```
+
+---
+
+## ⚙️ Inputs disponibles
+
+| Input              | Tipo                        | Default  | Descripción                                                            |
+|--------------------|------------------------------|----------|------------------------------------------------------------------------|
+| `copyText`         | `string`                     | `''`     | Texto explícito a copiar. Si no se define, copia el contenido interno. |
+| `showFeedback`     | `boolean`                    | `true`   | Mostrar feedback visual.                                               |
+| `feedbackDuration` | `number`                     | `2000`   | Tiempo en milisegundos para mostrar el feedback.                       |
+| `feedbackMessage`  | `string`                     | `''`     | Texto personalizado si no se define un template.                       |
+| `locale`           | `'auto' | 'es' | 'en'`        | `'auto'` | Detecta el idioma automáticamente o se fuerza manualmente.             |
+
+---
+
+## 🧩 Prioridad del feedback
+
+| Situación                          | Qué se muestra            |
+|------------------------------------|----------------------------|
+| Existe `<ngx-click-copy-feedback>` | Template personalizado     |
+| `feedbackMessage` definido         | Texto personalizado        |
+| Ninguno                            | Texto automático por idioma|
+
+---
+
+## 🎨 Variables CSS personalizables
+
+| Variable CSS                               | Default              | Descripción                                 |
+|--------------------------------------------|----------------------|---------------------------------------------|
+| `--ngx-click-copy-feedback-background`     | `black`              | Color de fondo del feedback                 |
+| `--ngx-click-copy-feedback-color`          | `white`              | Color de texto del feedback                 |
+| `--ngx-click-copy-feedback-padding`        | `0.5rem 1rem`        | Padding interno                             |
+| `--ngx-click-copy-feedback-border-radius`  | `0.375rem`           | Bordes redondeados                          |
+| `--ngx-click-copy-feedback-font-family`    | `inherit`            | Fuente utilizada (heredada de la app)       |
+| `--ngx-click-copy-feedback-top`            | `0.5rem`             | Posición superior                           |
+| `--ngx-click-copy-feedback-right`          | `0.5rem`             | Posición a la derecha                       |
+| `--ngx-click-copy-feedback-bottom`         | `auto`               | Posición inferior                           |
+| `--ngx-click-copy-feedback-left`           | `auto`               | Posición a la izquierda                     |
+
+---
+
+## 🧪 Ejemplo de personalización CSS
+
+```html
+<div style="
+  --ngx-click-copy-feedback-top: auto;
+  --ngx-click-copy-feedback-bottom: 1rem;
+  --ngx-click-copy-feedback-left: 1rem;
+  --ngx-click-copy-feedback-right: auto;
+  --ngx-click-copy-feedback-font-family: 'Fira Code', monospace;
+">
+  <ngx-click-copy [copyText]="'echo hola'" [showFeedback]="true">
+    <pre>echo hola</pre>
+  </ngx-click-copy>
+</div>
+```
+
+---
+
+## 🧠 Requisitos
+
+- Angular 17 o superior
+- Navegador compatible con `navigator.clipboard`
+
+---
+
+## 📜 Licencia
+
+MIT © 2025 - Pablo Andrés Rodríguez R.
 
