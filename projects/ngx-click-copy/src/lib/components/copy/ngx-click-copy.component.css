@@ -1,0 +1,31 @@
+.copy-area {
+  position: relative;
+  cursor: pointer;
+}
+
+.default-feedback {
+  position: absolute;
+
+  top: var(--ngx-click-copy-feedback-top, 0.5rem);
+  right: var(--ngx-click-copy-feedback-right, 0.5rem);
+  bottom: var(--ngx-click-copy-feedback-bottom, auto);
+  left: var(--ngx-click-copy-feedback-left, auto);
+
+  background-color: var(--ngx-click-copy-feedback-background, black);
+  color: var(--ngx-click-copy-feedback-color, white);
+  font-family: var(--ngx-click-copy-feedback-font-family, inherit);
+  padding: var(--ngx-click-copy-feedback-padding, 0.5rem 1rem);
+  border-radius: var(--ngx-click-copy-feedback-border-radius, 0.375rem);
+  font-size: 0.75rem;
+  z-index: 10;
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.default-feedback.hidden {
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  pointer-events: none;
+}

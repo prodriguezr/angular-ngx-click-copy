@@ -9,6 +9,10 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "paths": {
+      "@project/ngx-click-copy": ["./dist/ngx-click-copy"]
+    },
     "skipLibCheck": true,
     "isolatedModules": true,
     "esModuleInterop": true,

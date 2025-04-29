@@ -1,0 +1,34 @@
+<h1>Probando ngx-click-copy 🚀</h1>
+
+<ngx-click-copy [copyText]="'npm install ngx-click-copy'" [showFeedback]="true">
+  <pre>npm install ngx-click-copy</pre>
+
+  <ngx-click-copy-feedback>
+    <div>¡Texto copiado al portapapeles!</div>
+  </ngx-click-copy-feedback>
+</ngx-click-copy>
+
+<ngx-click-copy [showFeedback]="true" [feedbackDuration]="1000">
+  <pre>npm install ngx-click-copy1</pre>
+</ngx-click-copy>
+
+<div
+  style="
+    --ngx-click-copy-feedback-top: auto;
+    --ngx-click-copy-feedback-bottom: 4rem;
+    --ngx-click-copy-feedback-left: 1rem;
+    --ngx-click-copy-feedback-right: auto;
+  "
+>
+  <ngx-click-copy [copyText]="'echo hola mundo'">
+    <pre>echo hola mundo</pre>
+  </ngx-click-copy>
+</div>
+
+<div style="--ngx-click-copy-feedback-font-family: 'Fira Code', monospace">
+  <ngx-click-copy> ... </ngx-click-copy>
+</div>
+
+<ngx-click-copy [showFeedback]="true" [feedbackDuration]="3000" [locale]="'en'">
+  <pre>npm install</pre>
+</ngx-click-copy>

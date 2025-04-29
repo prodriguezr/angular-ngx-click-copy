@@ -1,0 +1,8 @@
+<div #copyContainer (click)="copyToClipboard()" class="copy-area">
+  <ng-content></ng-content>
+  @if (copied() && showFeedback() && !feedbackComponent) {
+  <div class="default-feedback">
+    {{ feedbackMessage() || defaultFeedbackMessage }}
+  </div>
+  }
+</div>
